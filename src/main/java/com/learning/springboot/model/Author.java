@@ -1,6 +1,7 @@
 package com.learning.springboot.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
@@ -8,11 +9,14 @@ import java.util.Date;
 @NamedStoredProcedureQuery(name = "getAllAuthors",
         procedureName = "get_all_authors",
         resultClasses = Author.class)
-public class Author {
+public class Author implements Serializable {
+
+    private static final long serialVersionUID = 2L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @Column(name = "author_id")
+    private Long author_id;
     @Column(name = "first_name")
     private String first_name;
     @Column(name = "last_name")
@@ -24,12 +28,12 @@ public class Author {
     @Column(name = "added")
     private Date added;
 
-    public Long getId() {
-        return id;
+    public Long getAuthor_id() {
+        return author_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setAuthor_id(Long author_id) {
+        this.author_id = author_id;
     }
 
     public String getFirst_name() {

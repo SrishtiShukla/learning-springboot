@@ -10,4 +10,7 @@ public interface ReportRepo extends CrudRepository<Author, Long> {
 
     @Query("SELECT id, first_name, last_name FROM Author")
     Iterable<Author> findAllAuthors();
+
+//    @Procedure(name = "getAllAuthors")
+//    Iterable<Author> findAllAuthors();
 }

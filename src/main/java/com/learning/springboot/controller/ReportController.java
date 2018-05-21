@@ -73,4 +73,9 @@ public class ReportController {
         return null;
     }
 
+    @GetMapping("/count")
+    public Long getAuthorListCount() {
+        return reportService.countAuthors();
+    }
+
 }

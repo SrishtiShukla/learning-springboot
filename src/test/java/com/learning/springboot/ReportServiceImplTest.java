@@ -1,6 +1,6 @@
 package com.learning.springboot;
 
-import com.learning.springboot.service.Impl.ReportServiceImpl;
+import com.learning.springboot.service.impl.ReportServiceImpl;
 import com.learning.springboot.service.ReportService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
