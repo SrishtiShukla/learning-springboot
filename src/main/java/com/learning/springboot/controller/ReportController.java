@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.jasperreports.JasperReportsCsvView;
 import org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView;
 
 @RestController
@@ -41,6 +42,29 @@ public class ReportController {
         view.setApplicationContext(applicationContext);
         JRBeanCollectionDataSource jrds = new JRBeanCollectionDataSource(
                 Lists.newArrayList(reportService.getAllAuthorsList()));
+        return new ModelAndView(view, "authorData", jrds);
+
+    }
+
+    @GetMapping("/procedure")
+    public ModelAndView getAuthorProcedureList() {
+        JasperReportsPdfView view = new JasperReportsPdfView();
+        view.setUrl("classpath:authors_procedure.jrxml");
+        view.setApplicationContext(applicationContext);
+        JRBeanCollectionDataSource jrds = new JRBeanCollectionDataSource(
+                Lists.newArrayList(reportService.getAllAuthorsList()));
+        return new ModelAndView(view, "authorData", jrds);
+
+    }
+
+    @GetMapping("/view")
+    public ModelAndView getAuthorViewList() {
+        JasperReportsCsvView view = new JasperReportsCsvView();
+//        JasperReportsPdfView view = new JasperReportsPdfView();
+        view.setUrl("classpath:authors_view.jrxml");
+        view.setApplicationContext(applicationContext);
+        JRBeanCollectionDataSource jrds = new JRBeanCollectionDataSource(
+                Lists.newArrayList(reportService.getAllAuthorsViewList()));
         return new ModelAndView(view, "authorData", jrds);
 
     }

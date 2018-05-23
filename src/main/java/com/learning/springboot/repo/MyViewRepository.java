@@ -1,8 +1,10 @@
 package com.learning.springboot.repo;
 
-import com.learning.springboot.model.MyView;
+import com.learning.springboot.service.MyViewDTO;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface MyViewRepository extends CrudRepository<MyView, Integer> {
+@Repository
+public interface MyViewRepository extends CrudRepository<MyViewDTO, Integer> {
 
 }

@@ -4,6 +4,7 @@ import com.learning.springboot.model.Author;
 import com.learning.springboot.repo.CustomReportRepoWithCrud;
 import com.learning.springboot.repo.MyViewRepository;
 import com.learning.springboot.repo.ReportRepo;
+import com.learning.springboot.service.MyViewDTO;
 import com.learning.springboot.service.ReportService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,11 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public Long countAuthors() {
         return myViewRepository.count();
+    }
+
+    @Override
+    public Iterable<MyViewDTO> getAllAuthorsViewList() {
+        return myViewRepository.findAll();
     }
 
     public List<Author> getSomeLegacyData(String firstParameter) {
